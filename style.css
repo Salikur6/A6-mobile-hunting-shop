@@ -13,3 +13,12 @@ body {
 #error {
     display: none;
 }
+
+#footer {
+    background-color: #0e1833;
+    margin-top: 350px;
+}
+
+#footer .container p {
+    color: #b3b3b3;
+}
