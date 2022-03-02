@@ -1,6 +1,7 @@
 const searchLoad = () => {
     document.getElementById('phone-container').innerHTML = '';
     document.getElementById('search-result').innerHTML = '';
+    document.getElementById('phone-details').innerHTML = '';
 
 
     const searchInput = document.getElementById('input').value;
@@ -19,7 +20,7 @@ const searchLoad = () => {
                 document.getElementById('loding').style.display = 'none';
                 document.getElementById('error').style.display = 'none'
 
-                showPhone(data.data)
+                showPhone(data.data.slice(0, 20))
 
                 const searchResultCount = document.getElementById('search-result');
                 const p = document.createElement('p');
