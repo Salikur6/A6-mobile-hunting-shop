@@ -1,20 +1,50 @@
 const searchLoad = () => {
+    document.getElementById('phone-container').innerHTML = '';
+    document.getElementById('search-result').innerHTML = '';
+
+
     const searchInput = document.getElementById('input').value;
 
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchInput}`
 
+
     fetch(url)
         .then(response => response.json())
-        .then(data => showPhone(data.data))
+        .then(data => {
+            if (data.data.length === 0) {
+                document.getElementById('error').style.display = 'block'
+                document.getElementById('loding').style.display = 'block';
+
+            } else {
+                document.getElementById('loding').style.display = 'none';
+                document.getElementById('error').style.display = 'none'
+
+                showPhone(data.data)
+
+                const searchResultCount = document.getElementById('search-result');
+                const p = document.createElement('p');
+                p.innerHTML = `
+                  <p>Total Search Result "${data.data.length}"</p>  
+                `
+                searchResultCount.appendChild(p);
+                console.log(p)
+            }
+        })
+
+
 
     document.getElementById('input').value = '';
 
 }
 
 const showPhone = (phones) => {
+
+    console.log(phones)
     const phoneContainer = document.getElementById('phone-container')
-    phoneContainer.innerHTML = '';
+
     for (const phone of phones) {
+
+
         const div = document.createElement('div');
         div.className = "card col-lg-4 col-md-4 p-3"
         div.innerHTML = `
@@ -119,6 +149,3 @@ const showDetails = (details) => {
             </table>
     `
 }
-
-
-// ${details.mainFeatures.sensors[0]}, ${details.mainFeatures.sensors[1]}, ${details.mainFeatures.sensors[2]}, ${details.mainFeatures.sensors[3]}, ${details.mainFeatures.sensors[4]}, ${details.mainFeatures.sensors[5]}, ${details.mainFeatures.sensors[6]}

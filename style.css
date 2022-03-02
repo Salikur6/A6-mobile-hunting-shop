@@ -5,3 +5,11 @@
 body {
     font-family: 'Cinzel', serif;
 }
+
+#loding {
+    display: none;
+}
+
+#error {
+    display: none;
+}
