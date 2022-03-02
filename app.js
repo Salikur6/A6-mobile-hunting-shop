@@ -1,13 +1,13 @@
+// click search to load api --------------------------------
+
 const searchLoad = () => {
     document.getElementById('phone-container').innerHTML = '';
     document.getElementById('search-result').innerHTML = '';
     document.getElementById('phone-details').innerHTML = '';
 
-
     const searchInput = document.getElementById('input').value;
 
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchInput}`
-
 
     fetch(url)
         .then(response => response.json())
@@ -31,12 +31,11 @@ const searchLoad = () => {
                 console.log(p)
             }
         })
-
-
-
     document.getElementById('input').value = '';
-
 }
+
+
+// show api content on ui---------------------------------------
 
 const showPhone = (phones) => {
 
@@ -44,7 +43,6 @@ const showPhone = (phones) => {
     const phoneContainer = document.getElementById('phone-container')
 
     for (const phone of phones) {
-
 
         const div = document.createElement('div');
         div.className = "card col-lg-4 col-md-4 p-3"
@@ -61,8 +59,8 @@ const showPhone = (phones) => {
     }
 }
 
+// click detail button to load detail about product---------------------------
 const phoneDetail = (slug) => {
-
     const url = `https://openapi.programming-hero.com/api/phone/${slug}`
 
     fetch(url)
@@ -70,6 +68,8 @@ const phoneDetail = (slug) => {
         .then(data => showDetails(data.data))
 }
 
+
+// details on ui------------------------------------------------------
 const showDetails = (details) => {
     console.log(details)
     const detailsContainer = document.getElementById('phone-details');
@@ -150,3 +150,5 @@ const showDetails = (details) => {
             </table>
     `
 }
+
+// -------------------------------------------------
