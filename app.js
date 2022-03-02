@@ -6,10 +6,14 @@ const searchLoad = () => {
     fetch(url)
         .then(response => response.json())
         .then(data => showPhone(data.data))
+
+    document.getElementById('input').value = '';
+
 }
 
 const showPhone = (phones) => {
     const phoneContainer = document.getElementById('phone-container')
+    phoneContainer.innerHTML = '';
     for (const phone of phones) {
         const div = document.createElement('div');
         div.className = "card col-lg-4 col-md-4 p-3"
