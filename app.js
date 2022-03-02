@@ -39,7 +39,6 @@ const showDetails = (details) => {
     console.log(details)
     const detailsContainer = document.getElementById('phone-details');
 
-    console.log(details.mainFeatures.sensors[0, 1, 2])
     detailsContainer.innerHTML = `
         <div class="w-50 mb-4 mx-auto text-center"><img class="w-50 " src="${details.image}"></div>
         <h2 class="text-center mb-3">${details.name} Full Specificatiions</h2>
@@ -76,7 +75,42 @@ const showDetails = (details) => {
                         <td class="pb-4">${details.mainFeatures.sensors.join( ', ' )}</td>
                     </tr>
 
-                    
+
+                   
+                    <tr style="background-color:#ddd;">
+                        <th class="pb-4" scope="row">Others</th>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Bluetooth</th>
+                        <td class="pb-4">${details?.others?.Bluetooth ? details.others.Bluetooth : "not found"}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">GPS</th>
+                        <td class="pb-4">${details?.others?.GPS ? details.others.GPS : "not found"}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">NFC</th>
+                        <td class="pb-4">${details.others?.NFC ? details.others.NFC : "not found"}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Radio</th>
+                        <td class="pb-4">${details.others?.Radio ? details.others.Radio : "not found"}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">USB</th>
+                        <td class="pb-4">${details.others?.USB ? details.others.USB : "not found"}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">WLAN</th>
+                        <td class="pb-4">${details?.others?.WLAN ? details.others.WLAN : "not found"}</td>
+                    </tr>                    
+                   
                 </tbody>
             </table>
     `
